@@ -1,0 +1,449 @@
+/* ============================================
+   Kissology — Luxury Perfume Brand
+   Palette: Black · Gold · Burgundy · Dark Purple
+   ============================================ */
+
+:root{
+  --bg:            #08040a;
+  --bg-2:          #120814;
+  --ink:           #f5ecd7;
+  --ink-dim:       #b8a98a;
+  --gold:          #d4a94a;
+  --gold-2:        #f3d27a;
+  --gold-deep:     #8a6a1f;
+  --burgundy:      #5a0f2a;
+  --burgundy-2:    #7a1638;
+  --purple:        #2a0f3a;
+  --purple-2:      #451a5c;
+  --glass:         rgba(255,255,255,.05);
+  --glass-brd:     rgba(212,169,74,.25);
+  --grad-gold:     linear-gradient(135deg,#f3d27a 0%,#d4a94a 45%,#8a6a1f 100%);
+  --grad-bg:       radial-gradient(ellipse at top,#2a0f3a 0%,#120814 45%,#08040a 100%);
+  --shadow-gold:   0 10px 40px -10px rgba(212,169,74,.5);
+  --shadow-deep:   0 30px 80px -20px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+  cursor:none;
+}
+@media(max-width:991px){ body{cursor:auto} .cursor-glow{display:none} }
+
+h1,h2,h3,h4,h5,.brand-logo{ font-family:'Playfair Display',serif; font-weight:700; letter-spacing:.5px; }
+
+a{color:var(--gold); text-decoration:none; transition:.3s}
+a:hover{color:var(--gold-2)}
+
+::selection{background:var(--gold); color:#000}
+
+/* Cursor Glow */
+.cursor-glow{
+  position:fixed; top:0; left:0; width:340px; height:340px;
+  border-radius:50%; pointer-events:none; z-index:9999;
+  background:radial-gradient(circle,rgba(243,210,122,.18) 0%,rgba(212,169,74,.06) 40%,transparent 70%);
+  transform:translate(-50%,-50%); mix-blend-mode:screen;
+  transition:transform .05s linear;
+}
+
+/* Particles bg */
+#particles{
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:var(--grad-bg);
+}
+
+/* Floating bottles */
+.floating-bottles{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden}
+.floating-bottles .bottle{
+  position:absolute; font-size:60px; color:rgba(212,169,74,.08);
+  animation:floatY 12s ease-in-out infinite;
+}
+.b1{top:15%; left:8%; animation-delay:0s}
+.b2{top:60%; left:85%; font-size:80px; animation-delay:2s}
+.b3{top:80%; left:20%; animation-delay:4s}
+.b4{top:25%; left:70%; font-size:70px; animation-delay:6s}
+@keyframes floatY{
+  0%,100%{ transform:translateY(0) rotate(0)}
+  50%{ transform:translateY(-40px) rotate(15deg)}
+}
+
+/* ============ Navbar ============ */
+.kiss-nav{
+  background:transparent;
+  padding:1.2rem 0;
+  transition:.4s;
+}
+.kiss-nav.scrolled{
+  background:rgba(8,4,10,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-brd);
+  padding:.7rem 0;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.brand-logo{
+  font-size:1.8rem !important;
+  color:var(--ink) !important;
+  letter-spacing:2px;
+  text-transform:none;
+}
+.brand-logo .logo-mark{
+  background:var(--grad-gold);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-size:2.4rem;
+  text-shadow:0 0 20px rgba(243,210,122,.5);
+}
+.kiss-nav .nav-link{
+  color:var(--ink) !important;
+  font-weight:400;
+  font-size:.95rem;
+  padding:.5rem 1rem !important;
+  position:relative;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.kiss-nav .nav-link::after{
+  content:''; position:absolute; bottom:0; left:50%; width:0; height:2px;
+  background:var(--grad-gold); transition:.3s;
+}
+.kiss-nav .nav-link:hover{color:var(--gold-2) !important}
+.kiss-nav .nav-link:hover::after{width:60%; left:20%}
+.navbar-toggler{border:1px solid var(--gold); color:var(--gold)}
+.navbar-toggler-icon{filter:invert(80%) sepia(50%) hue-rotate(0deg)}
+
+/* ============ Buttons ============ */
+.btn-gold{
+  background:var(--grad-gold);
+  color:#0b0509 !important;
+  border:none; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  padding:.85rem 2rem; border-radius:50px;
+  box-shadow:var(--shadow-gold);
+  position:relative; overflow:hidden;
+  transition:.35s;
+}
+.btn-gold::before{
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  transition:.6s;
+}
+.btn-gold:hover{transform:translateY(-3px); box-shadow:0 15px 50px -10px rgba(243,210,122,.7); color:#000 !important}
+.btn-gold:hover::before{left:100%}
+
+.btn-outline-gold{
+  background:transparent; color:var(--gold-2) !important;
+  border:1.5px solid var(--gold);
+  font-weight:500; letter-spacing:1.5px; text-transform:uppercase;
+  padding:.8rem 2rem; border-radius:50px;
+  transition:.3s;
+}
+.btn-outline-gold:hover{background:var(--grad-gold); color:#000 !important; box-shadow:var(--shadow-gold)}
+
+.btn-whatsapp{
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  color:#fff !important; border:none; border-radius:50px; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase;
+  box-shadow:0 10px 40px -10px rgba(37,211,102,.5);
+}
+.btn-whatsapp:hover{transform:translateY(-3px); color:#fff !important}
+
+/* ============ Sections ============ */
+.section{padding:120px 0; position:relative}
+.section-alt{background:linear-gradient(180deg, transparent, rgba(69,26,92,.15), transparent)}
+.eyebrow{
+  color:var(--gold); font-size:.85rem; letter-spacing:6px;
+  text-transform:uppercase; font-weight:500; margin-bottom:1rem;
+}
+.section-title{
+  font-size:clamp(2.2rem,5vw,4rem); margin-bottom:1.2rem; line-height:1.1;
+}
+.text-gradient{
+  background:var(--grad-gold); -webkit-background-clip:text;
+  background-clip:text; color:transparent;
+  text-shadow:0 0 60px rgba(243,210,122,.3);
+}
+.section-sub{color:var(--ink-dim); max-width:600px; margin:0 auto; font-size:1.05rem}
+.lead-soft{color:var(--ink-dim); font-size:1.05rem; line-height:1.8}
+
+/* ============ Hero ============ */
+.hero{
+  position:relative; height:100vh; min-height:700px;
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.hero-slides{position:absolute; inset:0}
+.hero-slide{
+  position:absolute; inset:0; background-size:cover; background-position:center;
+  opacity:0; transition:opacity 1.5s ease-in-out;
+  transform:scale(1.05);
+}
+.hero-slide.active{opacity:1; animation:kenburns 8s ease-out forwards}
+@keyframes kenburns{ from{transform:scale(1.05)} to{transform:scale(1.15)} }
+
+.hero-overlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at center, rgba(90,15,42,.35) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(8,4,10,.55) 0%, rgba(8,4,10,.85) 100%);
+}
+.hero-content{position:relative; z-index:2; max-width:900px}
+.hero-title{
+  font-size:clamp(2.8rem,7vw,6rem); margin:1rem 0 1.5rem;
+  line-height:1.05; letter-spacing:-1px;
+  text-shadow:0 4px 40px rgba(0,0,0,.7);
+}
+.hero-sub{
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:clamp(1.1rem,2.2vw,1.6rem); color:var(--ink-dim); margin-bottom:2.5rem;
+}
+.hero-ctas{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap}
+
+.hero-arrows .hero-arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:60px; height:60px; border-radius:50%;
+  background:rgba(0,0,0,.35); border:1px solid var(--glass-brd);
+  color:var(--gold); font-size:2rem; z-index:3; backdrop-filter:blur(10px);
+  transition:.3s;
+}
+.hero-arrow:hover{background:var(--grad-gold); color:#000; box-shadow:var(--shadow-gold)}
+#heroPrev{left:2rem}
+#heroNext{right:2rem}
+@media(max-width:768px){ .hero-arrow{width:44px;height:44px;font-size:1.5rem} #heroPrev{left:.5rem} #heroNext{right:.5rem} }
+
+.hero-dots{
+  position:absolute; bottom:100px; left:50%; transform:translateX(-50%);
+  display:flex; gap:12px; z-index:3;
+}
+.hero-dots .dot{
+  width:35px; height:3px; background:rgba(255,255,255,.3);
+  border:none; cursor:pointer; transition:.3s;
+}
+.hero-dots .dot.active{background:var(--grad-gold); width:55px; box-shadow:var(--shadow-gold)}
+
+.scroll-cue{
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  width:24px; height:40px; border:2px solid var(--gold); border-radius:12px; z-index:3;
+}
+.scroll-cue span{
+  display:block; width:4px; height:8px; background:var(--gold); margin:6px auto;
+  border-radius:2px; animation:scrollDown 2s infinite;
+}
+@keyframes scrollDown{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(12px);opacity:0}}
+
+/* ============ Product Cards ============ */
+.product-card{
+  position:relative; background:var(--glass); backdrop-filter:blur(20px);
+  border:1px solid var(--glass-brd); border-radius:20px;
+  padding:2rem 1.5rem; text-align:center; height:100%;
+  transition:.5s; overflow:hidden;
+}
+.product-card::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(243,210,122,.15), transparent 40%);
+  opacity:0; transition:.4s;
+}
+.product-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--gold);
+  box-shadow:var(--shadow-gold), var(--shadow-deep);
+}
+.product-card:hover::before{opacity:1}
+.product-card:hover .pc-img{transform:scale(1.08) rotate(-3deg)}
+.pc-img-wrap{
+  height:260px; display:flex; align-items:center; justify-content:center;
+  margin-bottom:1.5rem; position:relative;
+}
+.pc-img{
+  max-height:100%; max-width:100%; object-fit:contain;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));
+  transition:.6s cubic-bezier(.3,1.5,.5,1);
+}
+.pc-img-wrap::after{
+  content:''; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%);
+  width:70%; height:20px; border-radius:50%;
+  background:radial-gradient(ellipse, rgba(243,210,122,.35), transparent 70%);
+  filter:blur(8px);
+}
+.pc-name{font-family:'Playfair Display',serif; font-size:1.5rem; margin:0 0 .5rem}
+.pc-desc{color:var(--ink-dim); font-size:.9rem; min-height:44px; margin-bottom:1rem}
+.pc-price{color:var(--gold-2); font-size:1.3rem; font-weight:600; margin-bottom:1.2rem; letter-spacing:1px}
+.pc-price small{color:var(--ink-dim); font-size:.75rem; text-decoration:line-through; margin-left:.5rem}
+
+/* ============ Premium Slider ============ */
+.premium-slider{
+  position:relative; padding:2rem 0;
+  border-radius:24px;
+}
+.ps-track{
+  display:flex; overflow:hidden; scroll-behavior:smooth;
+  gap:1.5rem; padding:1rem;
+}
+.ps-slide{
+  flex:0 0 calc(33.333% - 1rem);
+  min-width:280px;
+  transition:.6s;
+}
+@media(max-width:991px){ .ps-slide{flex:0 0 calc(50% - .75rem)} }
+@media(max-width:640px){ .ps-slide{flex:0 0 100%} }
+.ps-arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:50px; height:50px; border-radius:50%;
+  background:var(--glass); border:1px solid var(--glass-brd);
+  color:var(--gold); font-size:1.5rem; z-index:2;
+  backdrop-filter:blur(10px); transition:.3s;
+}
+.ps-arrow:hover{background:var(--grad-gold); color:#000}
+.ps-prev{left:-10px}
+.ps-next{right:-10px}
+.ps-dots{display:flex; justify-content:center; gap:10px; margin-top:1.5rem}
+.ps-dots .dot{width:10px; height:10px; border-radius:50%; border:none; background:rgba(255,255,255,.2); cursor:pointer; transition:.3s}
+.ps-dots .dot.active{background:var(--grad-gold); transform:scale(1.4)}
+
+/* ============ Feature Cards ============ */
+.feature-card{
+  background:var(--glass); backdrop-filter:blur(20px);
+  border:1px solid var(--glass-brd); border-radius:20px;
+  padding:2.2rem 1.8rem; height:100%; text-align:center;
+  transition:.4s; position:relative; overflow:hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+.feature-card::before{
+  content:''; position:absolute; top:-2px; left:-2px; right:-2px; bottom:-2px;
+  background:var(--grad-gold); border-radius:22px; z-index:-1; opacity:0;
+  transition:.4s;
+}
+.feature-card:hover{transform:translateY(-8px); box-shadow:var(--shadow-gold)}
+.feature-card:hover::before{opacity:.6}
+.fc-icon{
+  width:80px; height:80px; margin:0 auto 1.5rem;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%; background:var(--grad-gold); color:#000;
+  font-size:1.9rem;
+  box-shadow:var(--shadow-gold);
+  /* neumorphism-lite */
+  box-shadow: 8px 8px 20px rgba(0,0,0,.5), -4px -4px 15px rgba(243,210,122,.1), var(--shadow-gold);
+}
+.feature-card h4{font-size:1.3rem; margin-bottom:.7rem}
+.feature-card p{color:var(--ink-dim); font-size:.92rem; margin:0}
+
+/* ============ About ============ */
+.about-visual{
+  position:relative; border-radius:20px; overflow:hidden;
+  border:1px solid var(--glass-brd);
+  box-shadow:var(--shadow-deep);
+}
+.about-visual img{width:100%; display:block; transition:.6s}
+.about-visual:hover img{transform:scale(1.05)}
+.about-glow{
+  position:absolute; top:-30%; right:-30%; width:60%; height:60%;
+  background:radial-gradient(circle, rgba(243,210,122,.4), transparent 70%);
+  filter:blur(60px); pointer-events:none;
+}
+.about-stats{display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap}
+.about-stats > div{
+  padding:1rem 1.5rem; border-left:2px solid var(--gold);
+}
+.about-stats span{display:block; font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold-2)}
+.about-stats small{color:var(--ink-dim); letter-spacing:1px; text-transform:uppercase; font-size:.75rem}
+
+/* ============ Reviews ============ */
+.review-card{
+  background:var(--glass); backdrop-filter:blur(20px);
+  border:1px solid var(--glass-brd); border-radius:20px;
+  padding:2rem; height:100%; position:relative;
+  transition:.4s;
+}
+.review-card:hover{transform:translateY(-6px); border-color:var(--gold); box-shadow:var(--shadow-gold)}
+.review-card .stars{color:var(--gold); margin-bottom:1rem; letter-spacing:3px}
+.review-card p{color:var(--ink); font-style:italic; font-family:'Playfair Display',serif; font-size:1.05rem; line-height:1.7}
+.review-user{display:flex; align-items:center; gap:1rem; margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--glass-brd)}
+.review-user img{width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid var(--gold)}
+.review-user h6{margin:0; color:var(--gold-2); font-family:'Playfair Display',serif}
+.review-user small{color:var(--ink-dim)}
+
+/* ============ Gallery ============ */
+.masonry{
+  column-count:3; column-gap:1.2rem;
+}
+@media(max-width:900px){.masonry{column-count:2}}
+@media(max-width:560px){.masonry{column-count:1}}
+.masonry a{
+  display:block; margin-bottom:1.2rem; break-inside:avoid;
+  border-radius:16px; overflow:hidden; position:relative;
+  border:1px solid var(--glass-brd);
+}
+.masonry img{width:100%; display:block; transition:.6s}
+.masonry a::after{
+  content:'\f00e'; font-family:'Font Awesome 6 Free'; font-weight:900;
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:2rem; color:var(--gold);
+  background:rgba(8,4,10,.5); backdrop-filter:blur(4px);
+  opacity:0; transition:.4s;
+}
+.masonry a:hover img{transform:scale(1.1)}
+.masonry a:hover::after{opacity:1}
+
+/* ============ Contact ============ */
+.contact-section{padding-top:80px; padding-bottom:80px}
+.contact-card{
+  background:linear-gradient(135deg, rgba(90,15,42,.4), rgba(42,15,58,.4));
+  backdrop-filter:blur(20px);
+  border:1px solid var(--glass-brd);
+  border-radius:28px;
+  padding:clamp(2rem,5vw,4rem);
+  position:relative; overflow:hidden;
+  box-shadow:var(--shadow-deep);
+}
+.contact-card::before{
+  content:''; position:absolute; top:-50%; left:-20%; width:60%; height:200%;
+  background:radial-gradient(circle, rgba(243,210,122,.15), transparent 70%);
+  filter:blur(80px);
+}
+.contact-list{list-style:none; padding:0; margin:2rem 0 0}
+.contact-list li{
+  display:flex; align-items:center; gap:1rem; padding:.8rem 0;
+  color:var(--ink); font-size:1.05rem;
+  border-bottom:1px solid rgba(212,169,74,.15);
+}
+.contact-list i{
+  width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+  background:var(--grad-gold); color:#000; border-radius:50%; font-size:.95rem;
+  box-shadow:var(--shadow-gold);
+}
+.contact-list a{color:var(--gold-2)}
+.contact-ctas{position:relative; z-index:2}
+
+/* ============ Footer ============ */
+.footer{
+  background:linear-gradient(180deg, transparent, rgba(0,0,0,.6));
+  border-top:1px solid var(--glass-brd);
+  padding:60px 0 30px; margin-top:60px;
+}
+.footer h6{color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:.85rem; margin-bottom:1rem}
+.footer-tag{color:var(--ink-dim); font-style:italic; font-family:'Playfair Display',serif}
+.footer-links{list-style:none; padding:0; margin:0}
+.footer-links a{color:var(--ink-dim); display:block; padding:.3rem 0; font-size:.95rem}
+.footer-links a:hover{color:var(--gold-2); padding-left:8px}
+.socials{display:flex; gap:.8rem}
+.socials a{
+  width:42px; height:42px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--glass); border:1px solid var(--glass-brd);
+  color:var(--gold); transition:.3s;
+}
+.socials a:hover{background:var(--grad-gold); color:#000; transform:translateY(-3px); box-shadow:var(--shadow-gold)}
+.footer hr{border-color:var(--glass-brd); margin:2rem 0 1rem}
+.copyright{color:var(--ink-dim); font-size:.85rem; margin:0}
+
+/* ============ Reveal ============ */
+[data-reveal]{opacity:0; transform:translateY(40px); transition:opacity 1s ease, transform 1s ease}
+[data-reveal].in{opacity:1; transform:none}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+}

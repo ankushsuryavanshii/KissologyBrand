@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kissology — The Art of Luxury Fragrance</title>
+  <meta name="description" content="Kissology — premium luxury perfumes crafted to capture love, elegance, and unforgettable moments. Founded by Ankush Suryavanshi, 2026." />
+  <meta name="keywords" content="Kissology, luxury perfume, premium fragrance, Ankush Suryavanshi, First Kiss, Midnight Kiss" />
+  <meta name="author" content="Ankush Suryavanshi" />
+  <meta property="og:title" content="Kissology — The Art of Luxury Fragrance" />
+  <meta property="og:description" content="Every Spray Tells a Love Story." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Particles Background -->
+<canvas id="particles"></canvas>
+
+<!-- Floating Bottles -->
+<div class="floating-bottles" aria-hidden="true">
+  <span class="bottle b1">✦</span>
+  <span class="bottle b2">❦</span>
+  <span class="bottle b3">✧</span>
+  <span class="bottle b4">❁</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top kiss-nav" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="#home">
+      <span class="logo-mark">K</span>issology
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#collection">Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="#bestsellers">Best Sellers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link btn-gold ms-lg-3" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Slideshow -->
+<header id="home" class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('assets/hero-1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/hero-2.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/hero-3.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/first-kiss.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content text-center">
+    <p class="eyebrow" data-anim="fade-down">— Est. 2026 —</p>
+    <h1 class="display-2 hero-title" data-anim="reveal">Discover the Art of<br><span class="text-gradient">Luxury Fragrance</span></h1>
+    <p class="hero-sub" data-anim="fade-up">Every Spray Tells a Love Story.</p>
+    <div class="hero-ctas" data-anim="fade-up">
+      <a href="#collection" class="btn btn-gold btn-lg me-2">Shop Now</a>
+      <a href="#bestsellers" class="btn btn-outline-gold btn-lg">Explore Collection</a>
+    </div>
+  </div>
+
+  <div class="hero-arrows">
+    <button class="hero-arrow" id="heroPrev" aria-label="Previous">‹</button>
+    <button class="hero-arrow" id="heroNext" aria-label="Next">›</button>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="scroll-cue"><span></span></div>
+</header>
+
+<!-- Featured Collection -->
+<section id="collection" class="section">
+  <div class="container">
+    <div class="section-head text-center" data-reveal>
+      <p class="eyebrow">The Signature Line</p>
+      <h2 class="section-title">Featured <span class="text-gradient">Collection</span></h2>
+      <p class="section-sub">Five fragrances. Five kisses. One unforgettable story.</p>
+    </div>
+
+    <div class="row g-4 mt-4" id="collectionGrid">
+      <!-- cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Best Sellers Slideshow -->
+<section id="bestsellers" class="section section-alt">
+  <div class="container">
+    <div class="section-head text-center" data-reveal>
+      <p class="eyebrow">Loved Most</p>
+      <h2 class="section-title">Best <span class="text-gradient">Sellers</span></h2>
+    </div>
+
+    <div class="premium-slider" data-reveal>
+      <div class="ps-track" id="psTrack"></div>
+      <button class="ps-arrow ps-prev" id="psPrev">‹</button>
+      <button class="ps-arrow ps-next" id="psNext">›</button>
+      <div class="ps-dots" id="psDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="section-head text-center" data-reveal>
+      <p class="eyebrow">The Kissology Difference</p>
+      <h2 class="section-title">Why Choose <span class="text-gradient">Kissology</span></h2>
+    </div>
+
+    <div class="row g-4 mt-4">
+      <div class="col-md-6 col-lg-4" data-reveal><div class="feature-card"><div class="fc-icon"><i class="fa-solid fa-hourglass-half"></i></div><h4>Long Lasting Fragrance</h4><p>Up to 12 hours of elegant sillage that lingers wherever you go.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-reveal><div class="feature-card"><div class="fc-icon"><i class="fa-solid fa-droplet"></i></div><h4>Premium Imported Oils</h4><p>Sourced from France & the Middle East for authentic depth.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-reveal><div class="feature-card"><div class="fc-icon"><i class="fa-solid fa-gem"></i></div><h4>Luxury Packaging</h4><p>Every bottle arrives in a velvet-lined signature gift box.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-reveal><div class="feature-card"><div class="fc-icon"><i class="fa-solid fa-leaf"></i></div><h4>Skin Friendly</h4><p>Dermatologically tested, alcohol-balanced, gentle on skin.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-reveal><div class="feature-card"><div class="fc-icon"><i class="fa-solid fa-gift"></i></div><h4>Perfect Gift</h4><p>An unforgettable gesture for anniversaries, birthdays & love.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-reveal><div class="feature-card"><div class="fc-icon"><i class="fa-solid fa-crown"></i></div><h4>Affordable Luxury</h4><p>Couture-grade fragrance without the couture price tag.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-reveal>
+        <div class="about-visual">
+          <img loading="lazy" src="assets/forever-kiss.jpg" alt="Kissology signature bottle" />
+          <div class="about-glow"></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-reveal>
+        <p class="eyebrow">Our Story</p>
+        <h2 class="section-title mb-4">Crafted from <span class="text-gradient">Emotion</span></h2>
+        <p class="lead-soft">
+          Kissology was founded in <strong>2026</strong> by <strong>Ankush Suryavanshi</strong> with a vision to
+          create premium fragrances that capture unforgettable moments and emotions. Every perfume is crafted to
+          express elegance, confidence, romance, and luxury.
+        </p>
+        <div class="about-stats">
+          <div><span>100%</span><small>Premium Oils</small></div>
+          <div><span>12h+</span><small>Longevity</small></div>
+          <div><span>5★</span><small>Loved by 10K+</small></div>
+        </div>
+        <a href="#contact" class="btn btn-gold mt-4">Order Yours</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-head text-center" data-reveal>
+      <p class="eyebrow">Love Letters</p>
+      <h2 class="section-title">What Our <span class="text-gradient">Kissologists</span> Say</h2>
+    </div>
+    <div class="row g-4 mt-4" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="section section-alt">
+  <div class="container">
+    <div class="section-head text-center" data-reveal>
+      <p class="eyebrow">Moments in a Bottle</p>
+      <h2 class="section-title">The <span class="text-gradient">Gallery</span></h2>
+    </div>
+    <div class="masonry mt-4" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="contact-card" data-reveal>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <p class="eyebrow">Get in Touch</p>
+          <h2 class="section-title mb-3">Speak with the <span class="text-gradient">Founder</span></h2>
+          <p class="lead-soft">Have a question, custom order, or partnership in mind? Reach out directly — every message is personally read.</p>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-user"></i> <span>Ankush Suryavanshi</span></li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+919355236004">+91 9355236004</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> <span>India · Ships Worldwide</span></li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-ctas">
+            <a href="tel:+919355236004" class="btn btn-gold btn-lg w-100 mb-3"><i class="fa-solid fa-phone me-2"></i>Call Now</a>
+            <a href="https://wa.me/919355236004" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg w-100 mb-3"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a>
+            <a href="https://wa.me/919355236004?text=I%20want%20to%20order%20from%20Kissology" target="_blank" rel="noopener" class="btn btn-outline-gold btn-lg w-100"><i class="fa-solid fa-bag-shopping me-2"></i>Order Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h3 class="brand-logo"><span class="logo-mark">K</span>issology</h3>
+        <p class="footer-tag">Every Spray Tells a Love Story.</p>
+      </div>
+      <div class="col-6 col-lg-4">
+        <h6>Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <h6>Follow the Fragrance</h6>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/919355236004" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:hello@kissology.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <p class="text-center copyright">© 2026 Kissology. All Rights Reserved. · Founded by Ankush Suryavanshi</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
